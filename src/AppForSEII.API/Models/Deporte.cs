@@ -1,6 +1,6 @@
-public class Deporte
+namespace AppForSEII2526.API.Models
 {
-   public enum NombreDeporte
+   public enum Deporte
    {
       Futbol,
       Baloncesto,
