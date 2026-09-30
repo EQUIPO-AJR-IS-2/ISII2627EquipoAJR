@@ -1,6 +1,6 @@
 @startuml
 !include .\\ApplicationUser.puml
-!include .\\ClaseDeportiva.puml
-!include .\\Deporte.puml
+!include .\\TipoDeporte.puml
 !include .\\TipoMaterial.puml
+!include .\\ClaseDeportiva.puml
 @enduml
