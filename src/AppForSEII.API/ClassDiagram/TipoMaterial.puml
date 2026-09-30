@@ -1,11 +1,7 @@
 @startuml
-enum TipoMaterial {
-    BalonFutbol,
-    BalonBasquet,
-    PelotaTenis,
-    RaquetaTenis,
-    RaquetaPadel,
-    BalonVoley,
-    GuantesBoxeo,
+class TipoMaterial {
+    + IdTipoMaterial : int <<get>> <<set>>
+    + NombreTipoMaterial : string <<get>> <<set>>
+    + Materiales : IList<Material> <<get>> <<set>>
 }
 @enduml
