@@ -18,5 +18,6 @@ namespace AppForSEII.API.Models
 
       // Relación con Materiales: de uno a muchos (un tipo de deporte puede tener varios materiales).
       public IList<Material> Materiales { get; set; } = new List<Material>();
+      public IList<Competicion> Competicione { get; set; } = new List<Competicion>();
    }
 }
