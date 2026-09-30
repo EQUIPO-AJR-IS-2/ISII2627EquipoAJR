@@ -1,0 +1,11 @@
+@startuml
+enum TipoMaterial {
+    BalonFutbol,
+    BalonBasquet,
+    PelotaTenis,
+    RaquetaTenis,
+    RaquetaPadel,
+    BalonVoley,
+    GuantesBoxeo,
+}
+@enduml
