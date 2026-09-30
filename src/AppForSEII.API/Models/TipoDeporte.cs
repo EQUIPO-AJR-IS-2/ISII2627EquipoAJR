@@ -17,5 +17,6 @@ namespace AppForSEII.API.Models
       public int Pistas { get; set; }
 
       // Relación con Materiales: de uno a muchos (un tipo de deporte puede tener varios materiales).
+      public IList<Material> Materiales { get; set; } = new List<Material>();
    }
 }

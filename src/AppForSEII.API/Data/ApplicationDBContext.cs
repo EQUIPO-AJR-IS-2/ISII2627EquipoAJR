@@ -20,6 +20,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<TipoDeporte> TiposDeporte { get; set; }
     public DbSet<ClaseDeportiva> ClasesDeportivas { get; set; }
     public DbSet<TipoMaterial> TiposMaterial { get; set; }
-
+    public DbSet<Material> Materiales { get; set; }
 
 }
