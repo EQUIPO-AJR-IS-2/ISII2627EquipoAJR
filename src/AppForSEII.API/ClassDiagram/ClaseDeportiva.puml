@@ -2,12 +2,12 @@
 class ClaseDeportiva {
     + Id : int <<get>> <<set>>
     + Descripcion : string <<get>> <<set>>
+    + FechaHora : DateTime <<get>> <<set>>
     + Lugar : string? <<get>> <<set>>
     + Monitor : string <<get>> <<set>>
     + Nivel : string <<get>> <<set>>
     + PlazasDisponibles : int <<get>> <<set>>
     + PrecioUnitario : decimal <<get>> <<set>>
+    + TipoDeporte : TipoDeporte <<get>> <<set>>
 }
-ClaseDeportiva --> "FechaHora" DateTime
-ClaseDeportiva --> "TipoDeporte" Deporte
 @enduml
