@@ -28,6 +28,6 @@ namespace AppForSEII.API.Models
         [Precision(10, 2)]
         public decimal PrecioUnitario { get; set; }
 
-        public Deporte TipoDeporte { get; set; }
+        public TipoDeporte TipoDeporte { get; set; }
     }
 }
