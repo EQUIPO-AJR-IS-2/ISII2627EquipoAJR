@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-using AppForSEII2526.API.Models;
 
 namespace AppForSEII.API.Models
 {
