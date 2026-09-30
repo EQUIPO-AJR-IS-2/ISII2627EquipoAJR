@@ -16,6 +16,6 @@ namespace AppForSEII.API.Models
       [Range(0, int.MaxValue, ErrorMessage = "El número de pistas no puede ser negativo.")]
       public int Pistas { get; set; }
 
-      // Relación con Materiales: de uno a muchos (un tipo de deporte puede tener varios materiales).
+      public IList<Competicion> Competicione { get; set; } = new List<Competicion>();
    }
 }
