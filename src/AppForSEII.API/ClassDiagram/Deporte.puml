@@ -1,0 +1,10 @@
+@startuml
+enum Deporte {
+    Futbol,
+    Baloncesto,
+    Tenis,
+    Padel,
+    Voleibol,
+    Boxeo,
+}
+@enduml
