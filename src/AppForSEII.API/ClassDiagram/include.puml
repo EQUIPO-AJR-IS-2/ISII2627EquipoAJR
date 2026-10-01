@@ -1,6 +1,8 @@
 @startuml
+!include .\\Alquiler.puml
 !include .\\ApplicationUser.puml
 !include .\\ClaseDeportiva.puml
+!include .\\Competicion.puml
 !include .\\Material.puml
 !include .\\TipoDeporte.puml
 !include .\\TipoMaterial.puml
