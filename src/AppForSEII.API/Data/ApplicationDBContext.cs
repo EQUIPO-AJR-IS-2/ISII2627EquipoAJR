@@ -23,5 +23,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<TipoMaterial> TiposMaterial { get; set; }
     public DbSet<Material> Materiales { get; set; }
     public DbSet<Alquiler> Alquileres { get; set; }
+    public DbSet<ClaseInscrita> ClasesInscritas { get; set; }
 
 }
