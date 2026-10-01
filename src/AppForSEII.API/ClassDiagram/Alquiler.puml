@@ -1,0 +1,11 @@
+@startuml
+class Alquiler {
+    + IdAlquiler : int <<get>> <<set>>
+    + <<required>> NombreUsuario : string <<get>> <<set>>
+    + <<required>> ApellidosUsuario : string <<get>> <<set>>
+    + <<required>> DNI : string <<get>> <<set>>
+    + <<required>> NumeroTelefono : string <<get>> <<set>>
+    + FechaAlquiler : DateTime <<get>> <<set>>
+    + PrecioTotal : decimal <<get>> <<set>>
+}
+@enduml
