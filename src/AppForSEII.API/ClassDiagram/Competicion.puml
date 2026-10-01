@@ -1,15 +1,14 @@
-﻿@startuml
+@startuml
 class Competicion {
     + Competicion()
     + Competicion(nombre:string, tipoDeporte:TipoDeporte, fecha:DateTime, lugar:string, plazas:int, precio:decimal)
     + Id : int <<get>> <<set>>
     + Nombre : string <<get>> <<set>>
+    + Fecha : DateTime <<get>> <<set>>
     + Lugar : string <<get>> <<set>>
     + Plazas : int <<get>> <<set>>
     + Precio : decimal <<get>> <<set>>
+    + TipoDeporte : TipoDeporte <<get>> <<set>>
     + TipoDeporteId : int <<get>> <<set>>
 }
-Competicion --> "Fecha" DateTime
-Competicion --> "TipoDeporte" TipoDeporte
-Competicion --> "CompeticionesInscritas<CompeticionInscrita>" IList
 @enduml

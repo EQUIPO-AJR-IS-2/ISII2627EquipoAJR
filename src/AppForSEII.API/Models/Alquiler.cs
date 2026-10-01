@@ -24,5 +24,10 @@ namespace AppForSEII.API.Models
         [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
         [Precision(7, 2)]
         public decimal PrecioTotal { get; set; }
+
+        /* Relacion con la clase MaterialAlquilado, que representa los materiales dentro de este alquiler
+        public IList<MaterialAlquilado> MaterialesAlquilados { get; set; } = new List<MaterialAlquilado>();*/
+
+        //Falta a su vez MetodoPago, cuando este implementado se añadirá
     }
 }
