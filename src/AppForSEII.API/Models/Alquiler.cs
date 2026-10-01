@@ -2,7 +2,7 @@ namespace AppForSEII.API.Models
 {
     public class Alquiler
     {
-         [Key] //Igual, este Key no haría falta si el nombre del diagrama fuese otro pero al ser así...
+        [Key] //Igual, este Key no haría falta si el nombre del diagrama fuese otro pero al ser así...
         public int IdAlquiler { get; set; }
 
         [StringLength(50, MinimumLength = 1, ErrorMessage = "El nombre no puede superar los 50 caracteres.")]
@@ -14,7 +14,7 @@ namespace AppForSEII.API.Models
         [StringLength(9, MinimumLength = 9, ErrorMessage = "El DNI debe tener 9 caracteres.")]
         public required string DNI { get; set; }
 
-        [Phone]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.PhoneNumber)]
         public required string NumeroTelefono { get; set; }
 
          // Fecha para la que el cliente reserva el material
@@ -25,9 +25,9 @@ namespace AppForSEII.API.Models
         [Precision(7, 2)]
         public decimal PrecioTotal { get; set; }
 
-        /* Relacion con la clase MaterialAlquilado, que representa los materiales dentro de este alquiler
-        public IList<MaterialAlquilado> MaterialesAlquilados { get; set; } = new List<MaterialAlquilado>();*/
+        //Relacion con la clase MaterialAlquilado, que representa los materiales dentro de este alquiler
+        public IList<MaterialAlquilado> MaterialesAlquilados { get; set; } = new List<MaterialAlquilado>();
 
-        //Falta a su vez MetodoPago, cuando este implementado se añadirá
+        public required MetodoPago MetodoPago { get; set; }
     }
 }

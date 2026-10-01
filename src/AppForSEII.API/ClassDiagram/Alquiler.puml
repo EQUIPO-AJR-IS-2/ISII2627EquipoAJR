@@ -7,5 +7,7 @@ class Alquiler {
     + <<required>> NumeroTelefono : string <<get>> <<set>>
     + FechaAlquiler : DateTime <<get>> <<set>>
     + PrecioTotal : decimal <<get>> <<set>>
+    + MaterialesAlquilados : IList<MaterialAlquilado> <<get>> <<set>>
+    + <<required>> MetodoPago : MetodoPago <<get>> <<set>>
 }
 @enduml

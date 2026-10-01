@@ -4,6 +4,8 @@
 !include .\\ClaseDeportiva.puml
 !include .\\Competicion.puml
 !include .\\Material.puml
+!include .\\MaterialAlquilado.puml
+!include .\\MetodoPago.puml
 !include .\\TipoDeporte.puml
 !include .\\TipoMaterial.puml
 @enduml
