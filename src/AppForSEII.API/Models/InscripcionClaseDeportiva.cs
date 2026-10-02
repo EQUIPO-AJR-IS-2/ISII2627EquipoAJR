@@ -17,6 +17,7 @@ namespace AppForSEII.API.Models
             PrecioTotal = precioTotal;
         }
 
+        [Key]
         public int Id { get; set; }
 
         public IList<ClaseInscrita> ClasesInscritas { get; set; }
