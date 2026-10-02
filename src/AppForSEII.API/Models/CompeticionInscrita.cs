@@ -1,5 +1,7 @@
 namespace AppForSEII.API.Models
 {
+
+    [PrimaryKey(nameof(CompeticionId), nameof(InscripcionId))]
 public class CompeticionInscrita
     {
         public CompeticionInscrita()
@@ -31,5 +33,6 @@ public class CompeticionInscrita
         [StringLength(250, ErrorMessage = "Las observaciones no pueden tener mas de 250 caracteres")]
         [DataType(System.ComponentModel.DataAnnotations.DataType.MultilineText)]
         public string? ProblemasFisicos { get; set; }
+        public IList<CompeticionInscrita> CompeticionesInscritas { get; set; } = new List<CompeticionInscrita>();
     }
 }
