@@ -19,6 +19,26 @@ namespace AppForSEII.API.Data {
                 logger.LogError(ex, "An error occurred seeding the Users in the Database.");
             }
 
+            try {
+                SeedTiposDeporte(dbContext);
+            }
+            catch (Exception ex) {
+                logger.LogError(ex, "An error occurred seeding the TiposDeporte in the Database.");
+            }
+ 
+            try {
+                SeedTiposMaterial(dbContext);
+            }
+            catch (Exception ex) {
+                logger.LogError(ex, "An error occurred seeding the TiposMaterial in the Database.");
+            }
+ 
+            try {
+                SeedMateriales(dbContext);
+            }
+            catch (Exception ex) {
+                logger.LogError(ex, "An error occurred seeding the Materiales in the Database.");
+            }
  
 
         }
@@ -72,7 +92,51 @@ namespace AppForSEII.API.Data {
         }
 
 
-
+        public static void SeedTiposDeporte(ApplicationDbContext dbContext) {
+            //it checks there is no TipoDeporte yet in the database
+            if (!dbContext.TiposDeporte.Any()) {
+                dbContext.TiposDeporte.AddRange(
+                    // El "0" es intencional: es una columna de identidad (autoincremental),
+                    // así que dejamos que la base de datos asigne el id real.
+                    new TipoDeporte(0, "Fútbol", "Liga Local", 2),
+                    new TipoDeporte(0, "Baloncesto", "Liga Regional", 1),
+                    new TipoDeporte(0, "Tenis", null, 3)
+                );
+                dbContext.SaveChanges();
+            }
+        }
+ 
+        public static void SeedTiposMaterial(ApplicationDbContext dbContext) {
+            //it checks there is no TipoMaterial yet in the database
+            if (!dbContext.TiposMaterial.Any()) {
+                dbContext.TiposMaterial.AddRange(
+                    new TipoMaterial(0, "Balón", new List<Material>()),
+                    new TipoMaterial(0, "Raqueta", new List<Material>()),
+                    new TipoMaterial(0, "Protección", new List<Material>())
+                );
+                dbContext.SaveChanges();
+            }
+        }
+ 
+        public static void SeedMateriales(ApplicationDbContext dbContext) {
+            //it checks there is no Material yet in the database
+            if (!dbContext.Materiales.Any()) {
+                var futbol = dbContext.TiposDeporte.First(t => t.Nombre == "Fútbol");
+                var baloncesto = dbContext.TiposDeporte.First(t => t.Nombre == "Baloncesto");
+                var tenis = dbContext.TiposDeporte.First(t => t.Nombre == "Tenis");
+ 
+                var balon = dbContext.TiposMaterial.First(t => t.NombreTipoMaterial == "Balón");
+                var raqueta = dbContext.TiposMaterial.First(t => t.NombreTipoMaterial == "Raqueta");
+ 
+                // Orden del constructor: idMaterial, nombreMaterial, precio, cantidad, tipoMaterial, tipoDeporte, materialesAlquilados
+                dbContext.Materiales.AddRange(
+                    new Material(0, "Balón de fútbol reglamentario", 3.50m, 10, balon, futbol, new List<MaterialAlquilado>()),
+                    new Material(0, "Balón de baloncesto", 2.50m, 8, balon, baloncesto, new List<MaterialAlquilado>()),
+                    new Material(0, "Raqueta de tenis", 4.00m, 5, raqueta, tenis, new List<MaterialAlquilado>())
+                );
+                dbContext.SaveChanges();
+            }
+        }
 
 
     }
