@@ -1,24 +1,23 @@
 namespace AppForSEII.API.Models
 {
+    [PrimaryKey(nameof(ClaseDeportivaId), nameof(InscripcionClaseDeportivaId))]
     public class ClaseInscrita
     {
-        public int Id { get; set; }
-
-
-        // Relación con ClaseDeportiva
-        public int ClaseDeportivaId { get; set; }
-
         public ClaseDeportiva ClaseDeportiva { get; set; } = null!;
 
-
-        // Relación con usuario inscrito
-        public string ApplicationUserId { get; set; } = null!;
-
-        public ApplicationUser ApplicationUser { get; set; } = null!;
+        public int ClaseDeportivaId { get; set; }
 
 
-        public DateTime FechaInscripcion { get; set; }
+        public InscripcionClaseDeportiva InscripcionClaseDeportiva { get; set; } = null!;
 
-        public bool Confirmada { get; set; }
+        public int InscripcionClaseDeportivaId { get; set; }
+
+
+        public string? Observaciones { get; set; }
+
+        public int PlazasReservadas { get; set; }
+
+        [Precision(10, 2)]
+        public decimal Precio { get; set; }
     }
 }
