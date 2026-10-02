@@ -168,7 +168,7 @@ namespace AppForSEII.API.Data {
                 );
                 dbContext.SaveChanges();
             }
-        }
+        
         }
 
         public static void SeedClasesDeportivas(ApplicationDbContext dbContext){
@@ -230,3 +230,4 @@ namespace AppForSEII.API.Data {
 
 
     }
+      }
