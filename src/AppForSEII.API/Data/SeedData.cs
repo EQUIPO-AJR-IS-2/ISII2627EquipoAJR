@@ -39,6 +39,16 @@ namespace AppForSEII.API.Data {
             catch (Exception ex) {
                 logger.LogError(ex, "An error occurred seeding the Materiales in the Database.");
             }
+
+            try
+            {
+                SeedClasesDeportivas(dbContext);
+            }
+            catch (Exception ex) 
+            {
+                logger.LogError(ex, "An error occurred seeding the ClasesDeportivas in the Database.");
+            }
+                    
  
 
         }
@@ -134,6 +144,63 @@ namespace AppForSEII.API.Data {
                     new Material(0, "Balón de baloncesto", 2.50m, 8, balon, baloncesto, new List<MaterialAlquilado>()),
                     new Material(0, "Raqueta de tenis", 4.00m, 5, raqueta, tenis, new List<MaterialAlquilado>())
                 );
+                dbContext.SaveChanges();
+            }
+        }
+
+        public static void SeedClasesDeportivas(ApplicationDbContext dbContext){
+            
+            if (!dbContext.ClasesDeportivas.Any())
+            {
+                var futbol = dbContext.TiposDeporte.First(t => t.Nombre == "Fútbol");
+                var baloncesto = dbContext.TiposDeporte.First(t => t.Nombre == "Baloncesto");
+                var tenis = dbContext.TiposDeporte.First(t => t.Nombre == "Tenis");
+
+                dbContext.ClasesDeportivas.AddRange(
+
+                    new ClaseDeportiva(
+                        0,
+                        "Entrenamiento de técnica y posesión",
+                        DateTime.Today.AddDays(1).AddHours(18),
+                        "Pista 1",
+                        "Carlos Ruiz",
+                        "Intermedio",
+                        20,
+                        7.50m,
+                        futbol,
+                        futbol.Id,
+                        new List<ClaseInscrita>()
+                    ),
+
+                    new ClaseDeportiva(
+                        0,
+                        "Iniciación al baloncesto",
+                        DateTime.Today.AddDays(2).AddHours(19),
+                        "Pista 2",
+                        "Marta López",
+                        "Iniciación",
+                        30,
+                        6.00m,
+                        baloncesto,
+                        baloncesto.Id,
+                        new List<ClaseInscrita>()
+                    ),
+
+                    new ClaseDeportiva(
+                        0,
+                        "Perfeccionamiento de saque y volea",
+                        DateTime.Today.AddDays(3).AddHours(17).AddMinutes(30),
+                        null,
+                        "Ana Martín",
+                        "Avanzado",
+                        8,
+                        10.00m,
+                        tenis,
+                        tenis.Id,
+                        new List<ClaseInscrita>()
+                    )
+                );
+
                 dbContext.SaveChanges();
             }
         }
