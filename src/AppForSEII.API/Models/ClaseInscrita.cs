@@ -26,11 +26,13 @@ namespace AppForSEII.API.Models
 
         public int InscripcionClaseDeportivaId { get; set; }
 
-
+        [StringLength(250)]
         public string? Observaciones { get; set; }
 
+        [Range(1, 3)]
         public int PlazasReservadas { get; set; }
 
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
         [Precision(10, 2)]
         public decimal Precio { get; set; }
     }
