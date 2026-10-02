@@ -40,6 +40,12 @@ namespace AppForSEII.API.Data {
                 logger.LogError(ex, "An error occurred seeding the Materiales in the Database.");
             }
 
+                        try {
+                SeedCompeticiones(dbContext);
+            }
+            catch (Exception ex) {
+                logger.LogError(ex, "An error occurred seeding the Competiciones in the Database.");
+            }
             try
             {
                 SeedClasesDeportivas(dbContext);
@@ -145,7 +151,24 @@ namespace AppForSEII.API.Data {
                     new Material(0, "Raqueta de tenis", 4.00m, 5, raqueta, tenis, new List<MaterialAlquilado>())
                 );
                 dbContext.SaveChanges();
+            }}
+        public static void SeedCompeticiones(ApplicationDbContext dbContext) {
+            
+            if (!dbContext.Competiciones.Any()) {
+                var futbol = dbContext.TiposDeporte.First(t => t.Nombre == "Fútbol");
+                var baloncesto = dbContext.TiposDeporte.First(t => t.Nombre == "Baloncesto");
+                var tenis = dbContext.TiposDeporte.First(t => t.Nombre == "Tenis");
+
+                
+                dbContext.Competiciones.AddRange(
+                    new Competicion("Liga Local de Futbol Sala", futbol, new DateTime(2026, 11, 15), "Pabellon Municipal", 20, 15.00m),
+                    new Competicion("Torneo 3x3 de Baloncesto", baloncesto, new DateTime(2026, 11, 22), "Pista Exterior Norte", 12, 10.10m),
+                    new Competicion("Open de Tenis de Otono", tenis, new DateTime(2026, 12, 5), "Pistas de Tenis", 16, 20.50m),
+                    new Competicion("Torneo Benefico de Futbol 7", futbol, new DateTime(2026, 12, 13), "Campo Anexo", 0, 12.00m)
+                );
+                dbContext.SaveChanges();
             }
+        
         }
 
         public static void SeedClasesDeportivas(ApplicationDbContext dbContext){
@@ -207,4 +230,4 @@ namespace AppForSEII.API.Data {
 
 
     }
-}
+      }
