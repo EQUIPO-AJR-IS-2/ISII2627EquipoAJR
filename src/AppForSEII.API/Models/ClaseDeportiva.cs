@@ -27,6 +27,11 @@ namespace AppForSEII.API.Models
         [Precision(10, 2)]
         public decimal PrecioUnitario { get; set; }
 
-        public TipoDeporte TipoDeporte { get; set; }
+        public TipoDeporte TipoDeporte { get; set; } = null!;
+
+        public int TipoDeporteId { get; set; }
+
+        public IList<ClaseInscrita> ClasesInscritas { get; set; }
+            = new List<ClaseInscrita>();
     }
 }
