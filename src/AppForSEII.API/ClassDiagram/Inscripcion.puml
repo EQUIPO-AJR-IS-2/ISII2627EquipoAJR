@@ -1,11 +1,17 @@
 @startuml
 class Inscripcion {
+    + Inscripcion()
+    + Inscripcion(nombreUsuario:string, apellidosUsuario:string, dni:string, telefono:string, email:string, fechaInscripcion:DateTime, metodoPago:MetodoPago, datosPago:string, applicationUser:ApplicationUser)
+    + Id : int <<get>> <<set>>
     + NombreUsuario : string <<get>> <<set>>
     + ApellidosUsuario : string <<get>> <<set>>
     + DNI : string <<get>> <<set>>
     + Telefono : string <<get>> <<set>>
     + Email : string <<get>> <<set>>
+    + FechaInscripcion : DateTime <<get>> <<set>>
+    + MetodoPago : MetodoPago <<get>> <<set>>
     + DatosPago : string <<get>> <<set>>
     + PrecioTotal : decimal <<get>> <<set>>
+    + ApplicationUser : ApplicationUser <<get>> <<set>>
 }
 @enduml

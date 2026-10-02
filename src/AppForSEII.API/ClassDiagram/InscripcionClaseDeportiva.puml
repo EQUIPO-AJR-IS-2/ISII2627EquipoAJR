@@ -1,0 +1,11 @@
+@startuml
+class InscripcionClaseDeportiva {
+    + Id : int <<get>> <<set>>
+    + ClasesInscritas : IList<ClaseInscrita> <<get>> <<set>>
+    + Cliente : ApplicationUser <<get>> <<set>>
+    + DatosPago : string <<get>> <<set>>
+    + FechaInscripcion : DateTime <<get>> <<set>>
+    + MetodoPago : MetodoPago <<get>> <<set>>
+    + PrecioTotal : decimal <<get>> <<set>>
+}
+@enduml
