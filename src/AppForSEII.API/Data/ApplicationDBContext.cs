@@ -26,5 +26,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Alquiler> Alquileres { get; set; }
     public DbSet<ClaseInscrita> ClasesInscritas { get; set; }
     public DbSet<InscripcionClaseDeportiva> InscripcionesClasesDeportivas { get; set; }
+    public DbSet<CompeticionInscrita> CompeticionesInscritas { get; set; }
 
 }
