@@ -1,0 +1,11 @@
+@startuml
+class ClaseInscrita {
+    + Id : int <<get>> <<set>>
+    + ClaseDeportivaId : int <<get>> <<set>>
+    + ClaseDeportiva : ClaseDeportiva <<get>> <<set>>
+    + ApplicationUserId : string <<get>> <<set>>
+    + ApplicationUser : ApplicationUser <<get>> <<set>>
+    + FechaInscripcion : DateTime <<get>> <<set>>
+    + Confirmada : bool <<get>> <<set>>
+}
+@enduml
