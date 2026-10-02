@@ -33,6 +33,7 @@ namespace AppForSEII.API.Models
 
         public MetodoPago MetodoPago { get; set; }
 
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
         [Precision(10, 2)]
         public decimal PrecioTotal { get; set; }
     }
