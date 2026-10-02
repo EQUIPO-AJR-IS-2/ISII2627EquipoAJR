@@ -5,5 +5,7 @@ class TipoDeporte {
     + Descripcion : string? <<get>> <<set>>
     + Competiciones : string? <<get>> <<set>>
     + Pistas : int <<get>> <<set>>
+    + Materiales : IList<Material> <<get>> <<set>>
+    + Competicione : IList<Competicion> <<get>> <<set>>
 }
 @enduml
