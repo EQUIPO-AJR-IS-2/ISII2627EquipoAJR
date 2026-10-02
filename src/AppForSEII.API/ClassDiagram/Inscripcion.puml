@@ -1,0 +1,11 @@
+@startuml
+class Inscripcion {
+    + NombreUsuario : string <<get>> <<set>>
+    + ApellidosUsuario : string <<get>> <<set>>
+    + DNI : string <<get>> <<set>>
+    + Telefono : string <<get>> <<set>>
+    + Email : string <<get>> <<set>>
+    + DatosPago : string <<get>> <<set>>
+    + PrecioTotal : decimal <<get>> <<set>>
+}
+@enduml
