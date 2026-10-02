@@ -6,45 +6,18 @@ namespace AppForSEII.API.Models
         {
         }
 
-        public Inscripcion(string nombreUsuario, string apellidosUsuario, string dni, string telefono,
-                           string email, DateTime fechaInscripcion, MetodoPago metodoPago, string datosPago,
-                           ApplicationUser applicationUser)
+        public Inscripcion(DateTime fechaInscripcion, MetodoPago metodoPago, string datosPago,
+                           ApplicationUser applicationUser, IList<CompeticionInscrita> competicionesInscritas)
         {
-            NombreUsuario = nombreUsuario;
-            ApellidosUsuario = apellidosUsuario;
-            DNI = dni;
-            Telefono = telefono;
-            Email = email;
             FechaInscripcion = fechaInscripcion;
             MetodoPago = metodoPago;
             DatosPago = datosPago;
             ApplicationUser = applicationUser;
-            
+            CompeticionesInscritas = competicionesInscritas;
+            PrecioTotal = competicionesInscritas.Sum(ci => ci.Competicion.Precio);
         }
 
         public int Id { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "El nombre es obligatorio")]
-        [StringLength(50, ErrorMessage = "El nombre no puede tener mas de 50 caracteres")]
-        public string NombreUsuario { get; set; } = string.Empty;
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Los apellidos son obligatorios")]
-        [StringLength(100, ErrorMessage = "Los apellidos no pueden tener mas de 100 caracteres")]
-        public string ApellidosUsuario { get; set; } = string.Empty;
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "El DNI es obligatorio")]
-        [StringLength(9, MinimumLength = 9, ErrorMessage = "El DNI debe tener 9 caracteres")]
-        public string DNI { get; set; } = string.Empty;
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "El telefono es obligatorio")]
-        [Phone]
-        [StringLength(15, MinimumLength = 9, ErrorMessage = "El telefono debe tener entre 9 y 15 caracteres")]
-        public string Telefono { get; set; } = string.Empty;
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "El correo electronico es obligatorio")]
-        [EmailAddress(ErrorMessage = "El formato del correo electronico no es valido")]
-        [StringLength(100, ErrorMessage = "El correo no puede tener mas de 100 caracteres")]
-        public string Email { get; set; } = string.Empty;
 
         [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -60,12 +33,11 @@ namespace AppForSEII.API.Models
         [Precision(10, 2)]
         public decimal PrecioTotal { get; set; }
 
-        // Usuario conectado que realiza la inscripcion
+        // Los datos personales del cliente (nombre, apellidos, correo y telefono)
+        // se obtienen de ApplicationUser, no se duplican en esta clase.
         [DeleteBehavior(DeleteBehavior.NoAction)]
         public ApplicationUser ApplicationUser { get; set; } = null!;
 
-        
+        public IList<CompeticionInscrita> CompeticionesInscritas { get; set; } = new List<CompeticionInscrita>();
     }
-
-
 }
