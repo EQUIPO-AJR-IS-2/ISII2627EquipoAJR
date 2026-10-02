@@ -5,6 +5,25 @@ namespace AppForSEII.API.Models
 {
     public class ClaseDeportiva
     {
+        public ClaseDeportiva()
+        {
+        }
+
+        public ClaseDeportiva(int id, string descripcion, DateTime fechaHora, string? lugar, string monitor, string nivel, int plazasDisponibles, decimal precioUnitario, TipoDeporte tipoDeporte, int tipoDeporteId, IList<ClaseInscrita> clasesInscritas)
+        {
+            Id = id;
+            Descripcion = descripcion;
+            FechaHora = fechaHora;
+            Lugar = lugar;
+            Monitor = monitor;
+            Nivel = nivel;
+            PlazasDisponibles = plazasDisponibles;
+            PrecioUnitario = precioUnitario;
+            TipoDeporte = tipoDeporte;
+            TipoDeporteId = tipoDeporteId;
+            ClasesInscritas = clasesInscritas;
+        }
+
         public int Id { get; set; }
 
         [Required]
