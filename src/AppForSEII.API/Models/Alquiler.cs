@@ -2,20 +2,21 @@ namespace AppForSEII.API.Models
 {
     public class Alquiler
     {
+        public Alquiler()
+        {
+        }
+        public Alquiler(int idAlquiler, DateTime fechaAlquiler, decimal precioTotal, IList<MaterialAlquilado> materialesAlquilados, MetodoPago metodoPago, ApplicationUser cliente)
+        {
+            IdAlquiler = idAlquiler;
+            FechaAlquiler = fechaAlquiler;
+            PrecioTotal = precioTotal;
+            MaterialesAlquilados = materialesAlquilados;
+            MetodoPago = metodoPago;
+            User = cliente;
+        }
+
         [Key] //Igual, este Key no haría falta si el nombre del diagrama fuese otro pero al ser así...
         public int IdAlquiler { get; set; }
-
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "El nombre no puede superar los 50 caracteres.")]
-        public required string NombreUsuario { get; set; }
-
-        [StringLength(100, MinimumLength = 1, ErrorMessage = "Los apellidos no pueden superar los 100 caracteres.")]
-        public required string ApellidosUsuario { get; set; }
-
-        [StringLength(9, MinimumLength = 9, ErrorMessage = "El DNI debe tener 9 caracteres.")]
-        public required string DNI { get; set; }
-
-        [DataType(System.ComponentModel.DataAnnotations.DataType.PhoneNumber)]
-        public required string NumeroTelefono { get; set; }
 
          // Fecha para la que el cliente reserva el material
         [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
@@ -28,6 +29,9 @@ namespace AppForSEII.API.Models
         //Relacion con la clase MaterialAlquilado, que representa los materiales dentro de este alquiler
         public IList<MaterialAlquilado> MaterialesAlquilados { get; set; } = new List<MaterialAlquilado>();
 
-        public required MetodoPago MetodoPago { get; set; }
+        public  MetodoPago MetodoPago { get; set; }
+
+        //Relacion con la clase Cliente, que representa al cliente que realiza el alquiler
+        public ApplicationUser User { get; set; }
     }
 }
