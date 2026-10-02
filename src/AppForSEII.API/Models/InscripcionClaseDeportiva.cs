@@ -17,6 +17,7 @@ namespace AppForSEII.API.Models
             PrecioTotal = precioTotal;
         }
 
+        [Key]
         public int Id { get; set; }
 
         public IList<ClaseInscrita> ClasesInscritas { get; set; }
@@ -33,6 +34,7 @@ namespace AppForSEII.API.Models
 
         public MetodoPago MetodoPago { get; set; }
 
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Currency)]
         [Precision(10, 2)]
         public decimal PrecioTotal { get; set; }
     }
