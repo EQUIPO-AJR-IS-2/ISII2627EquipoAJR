@@ -1,7 +1,7 @@
 namespace AppForSEII.API.Models
 {
     // El nombre de la competicion es unico
-    [Index(nameof(Nombre), IsUnique = true)]
+    
     public class Competicion
     {
         public Competicion()
@@ -49,6 +49,7 @@ namespace AppForSEII.API.Models
 
         public int TipoDeporteId { get; set; }
 
+        public IList<CompeticionInscrita> CompeticionesInscritas { get; set; } = new List<CompeticionInscrita>();
     
     }
 }
