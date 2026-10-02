@@ -2,6 +2,20 @@ namespace AppForSEII.API.Models
 {
    public class TipoDeporte
    {
+
+      public TipoDeporte()
+      {
+        
+      }
+
+      public TipoDeporte(int id, string nombre, string? descripcion, int pistas)
+      {
+         Id = id;
+         Nombre = nombre;
+         Descripcion = descripcion;
+         Competiciones = new List<Competicion>();
+         Pistas = pistas;
+      }
       public int Id { get; set; }
 
       [Required(AllowEmptyStrings = false, ErrorMessage = "El nombre del tipo de deporte es obligatorio")]
@@ -10,14 +24,12 @@ namespace AppForSEII.API.Models
 
       public string? Descripcion { get; set; }
 
-      [StringLength(200)]
-      public string? Competiciones { get; set; }
 
       [Range(0, int.MaxValue, ErrorMessage = "El número de pistas no puede ser negativo.")]
       public int Pistas { get; set; }
 
       // Relación con Materiales: de uno a muchos (un tipo de deporte puede tener varios materiales).
       public IList<Material> Materiales { get; set; } = new List<Material>();
-      public IList<Competicion> Competicione { get; set; } = new List<Competicion>();
+      public IList<Competicion> Competiciones { get; set; } = new List<Competicion>();
    }
 }
