@@ -24,19 +24,25 @@ namespace AppForSEII.API.Models
             ClasesInscritas = clasesInscritas;
         }
 
+        [Key]
         public int Id { get; set; }
 
+
         [Required]
+        [StringLength(250)]
         public string Descripcion { get; set; } = null!;
 
+        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime)]
         public DateTime FechaHora { get; set; }
 
         public string? Lugar { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Monitor { get; set; } = null!;
 
         [Required]
+        [StringLength(50)]
         public string Nivel { get; set; } = null!;
 
         [Range(0, 30)]
