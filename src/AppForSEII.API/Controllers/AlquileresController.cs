@@ -23,18 +23,19 @@ namespace AppForSEII.API.Controllers
         {
             var alquiler = await _context.Alquileres
                 .Where(a => a.IdAlquiler == id)
-                    .Include(a => a.User) //join ApplicationUser
-                    .Include(a => a.MaterialesAlquilados)
-                        .ThenInclude(ma => ma.Material)
-                            .ThenInclude(m => m.TipoMaterial)
+                    .Include(a => a.User) //join table ApplicationUser
+                    .Include(a => a.MaterialesAlquilados) //join table MaterialAlquilado
+                        .ThenInclude(ma => ma.Material) //then join table Material
+                            .ThenInclude(m => m.TipoMaterial) //then join table TipoMaterial
                 .Select(a => new AlquilerDetailDTO(a.IdAlquiler, a.FechaAlquiler,
-                    a.User.Dni ?? "", a.User.Name ?? "", a.User.Surname ?? "",
-                    a.User.PhoneNumber ?? "",
-                    a.MetodoPago, a.PrecioTotal,
-                    a.MaterialesAlquilados
-                        .Select(ma => new AlquilerItemDTO(ma.Material.IdMaterial,
-                            ma.Material.NombreMaterial, ma.Material.TipoMaterial.NombreTipoMaterial, ma.Material.TipoDeporte.Nombre,
-                            ma.Cantidad, ma.Precio)).ToList()))
+            a.User.Dni ?? "", a.User.Name ?? "", a.User.Surname ?? "",
+            a.User.PhoneNumber ?? "",
+            a.MetodoPago, a.PrecioTotal,
+            a.MaterialesAlquilados
+                .Select(ma => new AlquilerItemDTO(ma.Material.IdMaterial,
+                    ma.Material.NombreMaterial, ma.Material.TipoMaterial.NombreTipoMaterial,
+                    ma.Material.TipoDeporte.Nombre,
+                    ma.Cantidad, ma.Precio, ma.Descripcion)).ToList()))
                 .FirstOrDefaultAsync();
 
             if (alquiler == null)
@@ -45,5 +46,7 @@ namespace AppForSEII.API.Controllers
 
             return Ok(alquiler);
         }
+
+        
     }
 }
