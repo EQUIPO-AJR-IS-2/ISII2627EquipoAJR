@@ -1,7 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace AppForSEII.API.DTOs.InscripcionClaseDeportivaDTOs
+namespace AppForSEII.API.DTOs.ClaseDeportivaDTO
 {
     public class ClaseDeportivaDTO
     {

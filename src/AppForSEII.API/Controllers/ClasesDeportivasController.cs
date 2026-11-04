@@ -2,7 +2,7 @@ namespace AppForSEII.API.Controllers
 {
     using AppForSEII.API.Models;
     using Microsoft.AspNetCore.Mvc;
-    using AppForSEII.API.DTOs.InscripcionClaseDeportivaDTOs;
+    using AppForSEII.API.DTOs.ClaseDeportivaDTO;
 
     [ApiController]
     [Route("api/[controller]")]
