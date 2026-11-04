@@ -33,7 +33,7 @@ namespace AppForSEII.API.Controllers
                     a.MetodoPago, a.PrecioTotal,
                     a.MaterialesAlquilados
                         .Select(ma => new AlquilerItemDTO(ma.Material.IdMaterial,
-                            ma.Material.NombreMaterial, ma.Material.TipoMaterial.NombreTipoMaterial,
+                            ma.Material.NombreMaterial, ma.Material.TipoMaterial.NombreTipoMaterial, ma.Material.TipoDeporte.Nombre,
                             ma.Cantidad, ma.Precio)).ToList()))
                 .FirstOrDefaultAsync();
 
