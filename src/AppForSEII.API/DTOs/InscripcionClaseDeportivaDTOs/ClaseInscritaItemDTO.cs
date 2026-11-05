@@ -22,8 +22,8 @@ namespace AppForSEII.API.DTOs.InscripcionClaseDeportivaDTOs
         }
 
         public int ClaseDeportivaId { get; set; }
-        public string Descripcion { get; set; }
-        public string TipoDeporte { get; set; }
+        public string? Descripcion { get; set; }
+        public string? TipoDeporte { get; set; }
         public DateTime FechaHora { get; set; }
         public int PlazasReservadas { get; set; }
         public decimal Precio { get; set; }
