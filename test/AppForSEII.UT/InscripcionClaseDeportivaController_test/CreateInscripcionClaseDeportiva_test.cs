@@ -197,11 +197,18 @@ namespace AppForSEII.UT.InscripcionClaseDeportivaController_test
             var createdResult = Assert.IsType<CreatedAtActionResult>(result);
             var dto = Assert.IsType<InscripcionClaseDeportivaDetailDTO>(createdResult.Value);
 
-            Assert.Equal(string.Empty, dto.Dni);
-            Assert.Equal(string.Empty, dto.Nombre);
-            Assert.Equal(string.Empty, dto.Apellidos);
-            Assert.Equal(string.Empty, dto.Email);
-            Assert.Equal(string.Empty, dto.NumeroTelefono);
+            var expectedInscripcion = new InscripcionClaseDeportivaDetailDTO(
+                1, dto.FechaInscripcion,
+                "", "", "", "", "",
+                MetodoPago.Bizum, 7.50m,
+                new List<ClaseInscritaItemDTO>
+                {
+                    new ClaseInscritaItemDTO(
+                        1, "Entrenamiento de técnica y posesión", "Fútbol",
+                        _fechaClase1, 1, 7.50m, null)
+                });
+
+            Assert.True(expectedInscripcion.Equals(dto));
         }
     }
 }
