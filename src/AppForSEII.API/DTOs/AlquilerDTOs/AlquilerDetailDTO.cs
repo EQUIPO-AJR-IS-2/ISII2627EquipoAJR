@@ -45,7 +45,7 @@ namespace AppForSEII.API.DTOs.AlquilerDTOs
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(IdAlquiler, FechaAlquiler, Dni, Nombre, Apellidos,
+            return HashCode.Combine(IdAlquiler, FechaAlquiler, Dni, Nombre, Apellidos, NumeroTelefono,
                 MetodoPago, PrecioTotal);
         }
     }
