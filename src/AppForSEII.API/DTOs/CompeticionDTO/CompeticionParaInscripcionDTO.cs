@@ -2,9 +2,6 @@ namespace AppForSEII.API.DTOs.CompeticionDTOs
 {
     public class CompeticionParaInscripcionDTO
     {
-        public CompeticionParaInscripcionDTO()
-        {
-        }
 
         public CompeticionParaInscripcionDTO(int id, string nombre, string tipoDeporte,
                                              DateTime fecha, string lugar, decimal precio)
