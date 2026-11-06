@@ -80,7 +80,7 @@ namespace AppForSEII.API.Controllers
                 ModelState.AddModelError("NombreUsuario", "El nombre de usuario no está registrado.");
 
           
-            if (inscripcionForCreate.CompeticionesInscritas == null || inscripcionForCreate.CompeticionesInscritas.Count == 0)
+            if (inscripcionForCreate.CompeticionesInscritas.Count == 0)
                 ModelState.AddModelError("CompeticionesInscritas", "Debes seleccionar al menos una competición.");
 
             if (ModelState.ErrorCount > 0)
