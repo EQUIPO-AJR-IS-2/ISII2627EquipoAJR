@@ -31,11 +31,10 @@ namespace AppForSEII.API.Controllers
 
             IList<MaterialForRentalDTO> selectMateriales = await _context.Materiales
 
-                //Join Material with TipoMaterial and TipoDeporte
                 .Include(m => m.TipoMaterial)
                 .Include(m => m.TipoDeporte)
 
-                .Where(m => m.Cantidad > 0 // only materials in stock
+                .Where(m => m.Cantidad > 0 // Solo los materiales>0, es decir los que se pueden alquilar
                     && (tipoMaterial == null || m.TipoMaterial.NombreTipoMaterial.Equals(tipoMaterial)) //Aplica el filtro solo si se pasa un TipoMaterial
                     && (precioMaximo == null || m.Precio <= precioMaximo))
 
