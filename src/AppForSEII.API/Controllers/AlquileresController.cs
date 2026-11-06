@@ -104,6 +104,7 @@ namespace AppForSEII.API.Controllers
 
             alquiler.PrecioTotal = alquiler.MaterialesAlquilados.Sum(ma => ma.Precio * ma.Cantidad); //Esto es lo que hace el controller, no el cliente. El cliente envía precio: 0 en cada línea, y el controller calcula el precio total al guardar.
             //En el AlquilerForCreateDTO no tiene sentido por lo dicho antes el cliente envia precio 0 en cada línea, tu lo calculas aquí y lo guardas en la base de datos. 
+            _context.Add(alquiler); //Añade el alquiler a la base de datos, pero aún no lo guarda. Se guarda en el try-catch de abajo.
 
             try
             {
