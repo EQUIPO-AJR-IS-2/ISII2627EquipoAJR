@@ -33,7 +33,8 @@ namespace AppForSEII.UT.InscripcionClaseDeportivaController_test
             var clases = new List<ClaseDeportiva>() {
                 new ClaseDeportiva(1, "Entrenamiento de técnica y posesión", _fechaClase1, "Pista 1", "Carlos Ruiz", "Intermedio", 10, 7.50m, tipoDeporte1, 1, new List<ClaseInscrita>()),
                 new ClaseDeportiva(2, "Iniciación al baloncesto", _fechaClase2, "Pista 2", "Marta López", "Iniciación", 8, 6.00m, tipoDeporte2, 2, new List<ClaseInscrita>()),
-                new ClaseDeportiva(3, "Perfeccionamiento de saque y volea", _fechaClase3, "Pista 3", "Ana Martín", "Avanzado", 1, 5.00m, tipoDeporte1, 1, new List<ClaseInscrita>())
+                new ClaseDeportiva(3, "Perfeccionamiento de saque y volea", _fechaClase3, "Pista 3", "Ana Martín", "Avanzado", 1, 5.00m, tipoDeporte1, 1, new List<ClaseInscrita>()),
+                new ClaseDeportiva(4, "Teoria Baloncesto Online", _fechaClase3, "Pista 3", "Ana Martín", "Avanzado", 1, 3.00m, tipoDeporte2, 1, new List<ClaseInscrita>())
             };
 
             _context.AddRange(clases);
@@ -69,7 +70,8 @@ namespace AppForSEII.UT.InscripcionClaseDeportivaController_test
                 new object[] { CrearInscripcion(_userName, CrearItem(1, 0)), "Debes reservar entre 1 y 3 plazas por clase." },
                 new object[] { CrearInscripcion(_userName, CrearItem(1, 4)), "Debes reservar entre 1 y 3 plazas por clase." },
                 new object[] { CrearInscripcion(_userName, CrearItem(999, 1)), "La clase con id 999 no existe." },
-                new object[] { CrearInscripcion(_userName, CrearItem(3, 2)), "No hay suficientes plazas en la clase 3." }
+                new object[] { CrearInscripcion(_userName, CrearItem(3, 2)), "No hay suficientes plazas en la clase 3." },
+                new object[] { CrearInscripcion(_userName, CrearItem(4, 1)), "Error: el tipo de clase deportiva seleccionado no está soportado en el sistema" }
             };
         }
 
