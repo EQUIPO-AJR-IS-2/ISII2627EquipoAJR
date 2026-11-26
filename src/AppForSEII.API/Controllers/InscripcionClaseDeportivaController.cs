@@ -96,6 +96,10 @@ namespace AppForSEII.API.Controllers
                     ModelState.AddModelError("ClasesInscritas", $"La clase con id {item.ClaseDeportivaId} no existe.");
                 else if (clase.PlazasDisponibles < item.PlazasReservadas)
                     ModelState.AddModelError("ClasesInscritas", $"No hay suficientes plazas en la clase {clase.Id}.");
+                else if (clase.Descripcion.EndsWith("Online") || clase.Descripcion.EndsWith("Remota") )
+                {
+                    ModelState.AddModelError("ClasesInscritas", "Error: el tipo de clase deportiva seleccionado no está soportado en el sistema");
+                }
             }
 
             if (ModelState.ErrorCount > 0)
